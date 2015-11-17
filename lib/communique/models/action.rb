@@ -4,6 +4,7 @@ module Communique
     include ::Mongoid::Document
     include ::Mongoid::Timestamps
 
+    field :key
     field :name
     field :url
     field :description
