@@ -1,4 +1,4 @@
-# Communique
+# Communiqué
 
 Simple way to store warnings and errors affecting users as messages. Stored
 messages can be linked to a helpful link so they can read more about the problem
