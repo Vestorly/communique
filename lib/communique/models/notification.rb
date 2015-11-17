@@ -6,8 +6,11 @@ module Communique
 
     field :seen, type: Boolean, default: false
     field :integration, type: String
-    field :context
+    field :context_name
+    field :context_info, type: Hash
     field :action_key
+    has_one :action
+    belongs_to :advisor
 
     def notify
       'successful notification'

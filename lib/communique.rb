@@ -1,12 +1,15 @@
 require "communique/version"
-require "communique/action"
-require "communique/notification"
+require "communique/models/action"
+require "communique/models/notification"
 require 'pry'
 
 
 module Communique
-  def self.notify
+  def self.notify(advisor, context_name=nil)
     noty = Notification.new
+    noty.advisor = advisor
+    noty.context_name = context_name
+
     binding.pry
     noty.notify
   end
