@@ -9,6 +9,8 @@ module Communique
     field :url
     field :description
     field :image_url
+    field :send_email, type: Boolean, default: false
+    has_many :notifications
 
     def act
       'lets act on this'

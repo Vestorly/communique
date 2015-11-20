@@ -5,12 +5,12 @@ module Communique
     include ::Mongoid::Timestamps
 
     field :seen, type: Boolean, default: false
-    field :integration, type: String
     field :context_name
-    field :context_info, type: Hash
     field :action_key
-    has_one :action
+    field :context_info, type: Hash
+
     belongs_to :advisor
+    belongs_to :action
 
     def notify
       'successful notification'
