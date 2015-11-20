@@ -9,7 +9,7 @@ module Communique
     field :action_key
     field :context_info, type: Hash
 
-    belongs_to :advisor
+    belongs_to :notifiable, polymorphic: true
     belongs_to :action
 
     def notify
