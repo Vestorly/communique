@@ -3,33 +3,32 @@ require "communique/models/configuration"
 require "communique/models/action"
 require "communique/models/notifiable"
 require "communique/models/notification"
+require "communique/models/handler"
 require 'pry'
 
 
 module Communique
-  def self.notify(params={})
-    user = params[:user]
-    context_name = params[:name]
-    context_info = params[:info]
-    action_key = params[:action]
+  def self.notify(notifiable, action_key, context_info=nil)
+    action = Action.find_or_create_by(key: action_key)
 
-    binding.pry
-    noty = Notification.new(
-      context_name: context_name,
+    notification = Notification.create(
+      notifiable: notifiable,
       context_info: context_info,
       action_key: action_key,
+      action: action
     )
 
-    noty.notify
+    Handler.external_services notification
+
+    notification.id.to_s
   end
 
   def self.actions
-    act = Action.new
-    act.act
+    Action.all.to_a
   end
 
-  def self.notifications advisor
-    advisor.notifications
+  def self.viewed_all! notifiable
+    Notification.viewed_all! notifiable
   end
 
 end

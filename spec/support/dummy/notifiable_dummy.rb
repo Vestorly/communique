@@ -1,5 +1,5 @@
 require 'mongoid'
-class User
+class NotifiableDummy
   include Mongoid::Document
   include Mongoid::Timestamps
   include Communique::Notifiable

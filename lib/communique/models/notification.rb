@@ -5,7 +5,6 @@ module Communique
     include ::Mongoid::Timestamps
 
     field :seen, type: Boolean, default: false
-    field :context_name
     field :action_key
     field :context_info, type: Hash
 
@@ -14,6 +13,10 @@ module Communique
 
     def notify
       'successful notification'
+    end
+
+    def self.viewed_all! notifiable
+      notifiable.notifications.update_all(seen: true)
     end
   end
 end
