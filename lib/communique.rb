@@ -1,9 +1,9 @@
 require "communique/version"
-require "communique/models/configuration"
+require "communique/configuration"
 require "communique/models/action"
 require "communique/models/notifiable"
 require "communique/models/notification"
-require "communique/models/handler"
+require "communique/handler"
 require 'pry'
 
 
