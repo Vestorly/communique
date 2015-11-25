@@ -9,6 +9,7 @@ module Communique
     field :url
     field :description
     field :image_url
+    field :level
     field :send_email, type: Boolean, default: false
     has_many :notifications
 

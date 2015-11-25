@@ -17,19 +17,17 @@ describe Communique::Handler do
     end
 
     context 'with config block' do
+      let(:dummy_handler){HandlerDummy.new}
       before(:each) do
 
         Communique.configure do |config|
-          config.set_notification_handler do |notification, action|
-
-
+          config.set_notification_handler do |notification, action, dummy|
+            dummy_handler.push_notification(notification, action, dummy)
           end
         end
       end
 
       it 'external block gets called' do
-       #expect(Communique::Handler).to receive(:external_services).and_return nil
-
         dummy = NotifiableDummy.create
         Communique.notify(
           dummy,
@@ -37,6 +35,10 @@ describe Communique::Handler do
           name: 'locked star',
           location: 'it moves really fast'
         )
+
+        expect(dummy_handler.notification.context_info[:name]).to eq('locked star')
+        expect(dummy_handler.action.key).to eq('death_star_deadlock')
+        expect(dummy_handler.notifiable.class.name).to eq('NotifiableDummy')
       end
     end
   end

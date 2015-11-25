@@ -6,6 +6,7 @@ require 'database_cleaner'
 require 'mongoid'
 require 'communique'
 require "support/dummy/notifiable_dummy.rb"
+require "support/dummy/handler_dummy.rb"
 require "models/notification_spec.rb"
 
 Mongoid.load!("./config/mongoid.yml", :test)
