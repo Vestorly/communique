@@ -16,7 +16,7 @@ Gem::Specification.new do |spec|
     Includes a couple models and an api to make it easy to create notifications and
     the actions associated with them.
   }
-  spec.homepage      = ""
+  spec.homepage      = "https://www.vestorly.com/"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")
@@ -27,6 +27,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "bundler", "~> 1.7"
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "mongoid", "~> 4.0"
-  spec.add_development_dependency 'rspec'
-  spec.add_development_dependency 'database_cleaner'
+  spec.add_development_dependency 'rspec', "~> 3.2"
+  spec.add_development_dependency "database_cleaner", "~> 1.4"
 end
