@@ -5,7 +5,7 @@ module Communique
       config = Communique.config
       return if config.nil?
       return if config.notification_handler.nil?
-      # make sure config.notification_handler is a block
+
       validate_notification_handler!(config.notification_handler)
       config.notification_handler.call(
         notification,

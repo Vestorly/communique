@@ -10,8 +10,7 @@ require "support/dummy/handler_dummy.rb"
 require "models/notification_spec.rb"
 
 Mongoid.load!("./config/mongoid.yml", :test)
-#require 'pry'
-#binding.pry
+
 RSpec.configure do |config|
   config.before(:suite) do
     DatabaseCleaner.strategy = :truncation
