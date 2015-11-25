@@ -1,0 +1,12 @@
+development:
+  sessions:
+    default:
+      database: communique_development
+      hosts:
+        - localhost:27017
+test:
+  sessions:
+    default:
+      database: communique_test
+      hosts:
+        - localhost:27017
