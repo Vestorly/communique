@@ -4,8 +4,6 @@ require "communique/models/action"
 require "communique/models/notifiable"
 require "communique/models/notification"
 require "communique/handler"
-require 'pry'
-
 
 module Communique
   def self.notify(notifiable, action_key, context_info=nil)
