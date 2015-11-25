@@ -12,7 +12,10 @@ Gem::Specification.new do |spec|
     Simple way to store warnings and errors affecting users as messages. Stored
     messages can be linked to a helpful link so they can read more about the problem
   }
-  spec.description   = %q{TODO: Write a longer description. Optional.}
+  spec.description   = %q{
+    Includes a couple models and an api to make it easy to create notifications and
+    the actions associated with them.
+  }
   spec.homepage      = ""
   spec.license       = "MIT"
 
