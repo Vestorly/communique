@@ -29,4 +29,11 @@ module Communique
     Notification.viewed_all! notifiable
   end
 
+  def self.viewed! notifiable, seen_notification_ids
+    Notification.viewed! notifiable, seen_notification_ids
+  end
+
+  def self.count_unseen notifiable
+    Notification.count_unseen notifiable
+  end
 end

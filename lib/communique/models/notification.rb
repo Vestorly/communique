@@ -18,5 +18,15 @@ module Communique
     def self.viewed_all! notifiable
       notifiable.notifications.update_all(seen: true)
     end
+
+    def self.viewed! notifiable, seen_notification_ids
+      notifiable.notifications.where(
+        :_id.in =>  seen_notification_ids
+      ).update_all(:seen => true)
+    end
+
+    def self.count_unseen notifiable
+      notifiable.notifications.where(:seen => false).count
+    end
   end
 end
