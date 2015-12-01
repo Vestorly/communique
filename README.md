@@ -1,6 +1,7 @@
-# Communiqué
-
 ![communique logo](https://raw.github.com/Vestorly/communique/master/assets/logo.png)
+
+[![Code Climate](https://codeclimate.com/github/Vestorly/communique/badges/gpa.svg)](https://codeclimate.com/github/Vestorly/communique)
+
 Simple way to store warnings and errors affecting users as messages. Stored
 messages can be linked to a helpful link so they can read more about the problem
 
@@ -23,8 +24,18 @@ Or install it yourself as:
     $ gem install communique
 
 ## Usage
+`include Communique::Notifiable` in the model you want to have notifications eg. the user model.
 
-TODO: Write usage instructions here
+To create a notification:
+```
+Communique.notify(
+    @user,
+    'this_is_the_action_key',
+    context: 'you get some context',
+    more_context: 'you get some context',
+    even_more_context: 'you get some context'
+    )
+```
 
 ## Contributing
 
