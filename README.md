@@ -1,5 +1,6 @@
 # Communiqué
 
+![communique logo](https://raw.github.com/Vestorly/communique/master/assets/logo.png)
 Simple way to store warnings and errors affecting users as messages. Stored
 messages can be linked to a helpful link so they can read more about the problem
 
