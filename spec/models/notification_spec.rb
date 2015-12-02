@@ -1,4 +1,4 @@
-require "spec_helper"
+require 'spec_helper'
 describe Communique::Notification do
   describe '#viewed_all!' do
     it 'makes all notifications seen' do
@@ -25,7 +25,6 @@ describe Communique::Notification do
 
       expect(dummy.notifications.first.seen).to be true
       expect(dummy.notifications.last.seen).to be true
-
     end
   end
 
@@ -54,7 +53,6 @@ describe Communique::Notification do
 
       expect(dummy.notifications.first.seen).to be true
       expect(dummy.notifications.last.seen).to be false
-
     end
   end
 
@@ -77,7 +75,6 @@ describe Communique::Notification do
       Communique.viewed_all! dummy
       dummy.reload
       expect(Communique.count_unseen(dummy)).to be 0
-
     end
   end
 end
