@@ -12,10 +12,6 @@ module Communique
     belongs_to :notifiable, polymorphic: true
     belongs_to :action
 
-    def notify
-      'successful notification'
-    end
-
     def self.viewed_all!(notifiable)
       notifiable.notifications.update_all(seen: true)
     end
