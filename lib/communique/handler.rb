@@ -1,7 +1,9 @@
 module Communique
   class NotificationHandlerNotCallable < StandardError; end
+
+  # notification handler can do things like send push notifications and emails
   class Handler
-    def self.external_services notification
+    def self.external_services(notification)
       config = Communique.config
       return if config.nil?
       return if config.notification_handler.nil?
@@ -15,9 +17,10 @@ module Communique
     end
 
     def self.validate_notification_handler!(handler)
-      if !handler.respond_to? :call
-        raise NotificationHandlerNotCallable.new(
-          "notification_handler needs to be nil or a callable block"
+      unless handler.respond_to?(:call)
+        fail(
+          NotificationHandlerNotCallable,
+          'notification_handler needs to be nil or a callable block'
         )
       end
     end
