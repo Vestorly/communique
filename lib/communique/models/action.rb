@@ -1,5 +1,7 @@
 require 'mongoid'
 module Communique
+  # notificaitons contain an action which gives more info about a certain
+  # message/error. These are what is shown to the user
   class Action
     include ::Mongoid::Document
     include ::Mongoid::Timestamps
@@ -12,9 +14,5 @@ module Communique
     field :level
     field :send_email, type: Boolean, default: false
     has_many :notifications
-
-    def act
-      'lets act on this'
-    end
   end
 end
