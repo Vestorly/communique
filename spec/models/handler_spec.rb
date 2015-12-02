@@ -17,7 +17,7 @@ describe Communique::Handler do
       end
     end
 
-    context 'with config block' do
+    context 'with valid config block' do
       let(:dummy_handler) { HandlerDummy.new }
       before(:each) do
         Communique.configure do |config|
@@ -40,6 +40,35 @@ describe Communique::Handler do
           .to eq('locked star')
         expect(dummy_handler.action.key).to eq('death_star_deadlock')
         expect(dummy_handler.notifiable.class.name).to eq('NotifiableDummy')
+      end
+    end
+
+    context 'with invalid config block' do
+      let(:dummy_handler) { HandlerDummy.new }
+      before(:each) do
+        Communique.configure do |config|
+          config.notification_handler = 'not callable'
+        end
+      end
+      after(:each) do
+        Communique.configure do |config|
+          config.notification_handler = nil
+        end
+      end
+
+      it 'external block gets called' do
+        dummy = NotifiableDummy.create
+        expect do
+          Communique.notify(
+            dummy,
+            'death_star_deadlock',
+            name: 'locked star',
+            location: 'it moves really fast'
+          )
+        end.to raise_error(
+          Communique::NotificationHandlerNotCallable,
+          'notification_handler needs to be nil or a callable block'
+        )
       end
     end
   end
