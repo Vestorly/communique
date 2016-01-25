@@ -21,4 +21,37 @@ describe Communique do
       )
     end
   end
+  describe 'config.prevent_unseen_duplicates' do
+    it 'creates notifications when prevent_unseen_duplicates if false' do
+      Communique.configure { |config| config.prevent_unseen_duplicates = false }
+
+      dummy = NotifiableDummy.create
+      2.times do
+        Communique.notify(
+          dummy,
+          '3CPO_fell_down_and_hit_his_head',
+          name: 'broken robot',
+          location: 'nginx caching issue'
+        )
+      end
+      expect(dummy.notifications.count).to be 2
+
+    end
+
+    it 'updates notifications when prevent_unseen_duplicates if true' do
+      Communique.configure { |config| config.prevent_unseen_duplicates = true }
+
+      dummy = NotifiableDummy.create
+      2.times do
+        Communique.notify(
+          dummy,
+          '3CPO_fell_down_and_hit_his_head',
+          name: 'broken robot',
+          location: 'nginx caching issue'
+        )
+      end
+      expect(dummy.notifications.count).to be 1
+    end
+
+  end
 end
