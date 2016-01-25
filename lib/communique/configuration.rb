@@ -13,6 +13,7 @@ module Communique
   class Configuration
     attr_accessor :user_klass
     attr_accessor :notification_handler
+    attr_accessor :prevent_unseen_duplicates
 
     def set_notification_handler(&block)
       @notification_handler = block
