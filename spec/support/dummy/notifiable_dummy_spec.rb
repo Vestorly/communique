@@ -1,9 +1,8 @@
-require "spec_helper"
-require 'pry'
+require 'spec_helper'
 describe NotifiableDummy do
- # it 'has a configuration already set' do
- #   expect(Communique.config).to_not be_nil
- # end
+  it 'has a configuration already set' do
+    expect(Communique.config).to_not be_nil
+  end
 
   it 'has notifications' do
     dummy = NotifiableDummy.new
@@ -16,7 +15,5 @@ describe NotifiableDummy do
 
     )
     expect(dummy.notifications.first.context_info[:name]).to eq('hello')
-
   end
-
 end
