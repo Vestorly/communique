@@ -13,7 +13,10 @@ module Communique
     if prevent_unseen_duplicates?
       existing_notification = find_existing_notifications(notifiable, action_key)
       if existing_notification
-        existing_notification.update_attributes(context_info: context_info)
+        existing_notification.update_attributes(
+          context_info: context_info,
+          updated_at: Time.now
+        )
         return existing_notification.id.to_s
       end
     end
