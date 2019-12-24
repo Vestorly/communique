@@ -13,3 +13,6 @@
 *.a
 *.gem
 mkmf.log
+
+# Vim swap files
+*.swp

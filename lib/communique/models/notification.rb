@@ -9,8 +9,8 @@ module Communique
     field :action_key
     field :context_info, type: Hash
 
-    belongs_to :notifiable, polymorphic: true
-    belongs_to :action
+    belongs_to :notifiable, polymorphic: true, optional: true
+    belongs_to :action, optional: true
 
     def self.viewed_all!(notifiable)
       notifiable.notifications.update_all(seen: true)
